@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Puzzle</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+  .puzzle-piece {
+    width: 200px;
+    height: 290px;
+    background-image: url('https://empire-s3-production.bobvila.com/slides/35863/original/tiny_new_york_apartments.jpg?1581523935');
+    background-size: 1200px 870px;
+    border: 2px solid #000;
+  }
+</style>
+</head>
+<body>
+
+<div id="puzzle-container">
+  <div class="puzzle-piece draggable" id="piece1" style="background-position: -10px -10px;"></div>
+  <div class="puzzle-piece draggable" id="piece2" style="background-position: -220px -10px;"></div>
+  <div class="puzzle-piece draggable" id="piece3" style="background-position: -430px -10px;"></div>
+  <div class="puzzle-piece draggable" id="piece4" style="background-position: -640px -10px;"></div>
+  <div class="puzzle-piece draggable" id="piece5" style="background-position: -850px -10px;"></div>
+  <div class="puzzle-piece draggable" id="piece6" style="background-position: -1060px -10px;"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.draggable').draggable({
+      containment: '#puzzle-container',
+      snap: '#puzzle-container',
+      snapMode: 'inner'
+    });
+  });
+</script>
+
+</body>
+</html>
