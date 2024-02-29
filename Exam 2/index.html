@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COP 4020 Test Question 1</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>COP 4020 Test Question 1 - October 12, 2023</h1>
+    <table>
+        <tr>
+            <td>Select the input temperature type: </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Fahrenheit</td>
+                        <td>
+                            <input type="radio" id="fahrenheit_in" name="inputtemp" value="fahrenheit"> 
+                        </td>
+                        <td></td>
+                        <td>Celsius</td>
+                        <td>
+                            <input type="radio" id="celsius_in" name="inputtemp" value="celsius"> 
+                        </td>
+                        <td></td>
+                        <td>Kelvin</td>
+                        <td>
+                            <input type="radio" id="kelvin_in" name="inputtemp" value="kelvin"> 
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Input Temperature:</td>
+            <td><input type="text" id="tempinput" name="tempinput"></td>
+        </tr>
+        <tr>
+            <td>Select the output temperature type: </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Fahrenheit</td>
+                        <td>
+                            <input type="radio" id="fahrenheit_out" name="outputtemp" value="fahrenheit"> 
+                        </td>
+                        <td></td>
+                        <td>Celsius</td>
+                        <td>
+                            <input type="radio" id="celsius_out" name="outputtemp" value="celsius"> 
+                        </td>
+                        <td></td>
+                        <td>Kelvin</td>
+                        <td>
+                            <input type="radio" id="kelvin_out" name="outputtemp" value="kelvin"> 
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <center>
+                    <button id="calculateBtn" type="button">Calculate</button>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <center>
+                    <span id="tempoutput">The Answer Goes Here</span>
+                </center>
+            </td>
+        </tr>
+    </table>
+
+<script>
+    $(document).ready(function() {
+        $("#calculateBtn").click(function() {
+            var inputType = $("input[name='inputtemp']:checked").val();
+            var outputType = $("input[name='outputtemp']:checked").val();
+            var inputValue = parseFloat($("#tempinput").val());
+            var result = convertTemperature(inputType, outputType, inputValue);
+            $("#tempoutput").text(result);
+        });
+    });
+
+    function convertTemperature(inputType, outputType, inputValue) {
+        if (inputType === outputType) {
+            return inputValue;
+        } else if (inputType === "fahrenheit") {
+            if (outputType === "celsius") {
+                return (inputValue - 32) * 5 / 9;
+            } else if (outputType === "kelvin") {
+                return (inputValue - 32) * 5 / 9 + 273.15;
+            }
+        } else if (inputType === "celsius") {
+            if (outputType === "fahrenheit") {
+                return (inputValue * 9 / 5) + 32;
+            } else if (outputType === "kelvin") {
+                return inputValue + 273.15;
+            }
+        } else if (inputType === "kelvin") {
+            if (outputType === "fahrenheit") {
+                return (inputValue - 273.15) * 9 / 5 + 32;
+            } else if (outputType === "celsius") {
+                return inputValue - 273.15;
+            }
+        }
+        return "Invalid conversion";
+    }
+</script>
+
+</body>
+</html>
