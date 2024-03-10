@@ -44,7 +44,7 @@ private:
         if (innings - notout != 0) {
             batavg = (float)runs / (innings - notout);
         } else {
-            batavg = 0; // Handle division by zero
+            batavg = 0;
         }
     }
 
@@ -233,7 +233,7 @@ public:
         if (imag >= 0) {
             cout << "+" << imag << "i" << endl;
         } else {
-            cout << imag << "i" << endl; // Displaying the negative imaginary part
+            cout << imag << "i" << endl;
         }
     }
 
